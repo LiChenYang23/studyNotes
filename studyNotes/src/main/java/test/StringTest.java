@@ -1170,36 +1170,36 @@ public class StringTest {
 
     @Test
     public void test1(){
-        JsonBean jsonBean = JSON.parseObject(jsonTxt, JsonBean.class);
-        List<JsonBean.ListBean> list = jsonBean.getList();
-        list.stream().forEach(e -> System.out.println(e));
-        try {
-            Field[] declaredFields = JsonBean.ListBean.class.getDeclaredFields();
-            ArrayList<String[]> strArrays = new ArrayList<>();
-            list.stream().forEach(e -> {
-                String[] strings = objectToStringArray(declaredFields, e);
-                strArrays.add(strings);
-            });
-            String fileName = "123.csv";
-            String csvFilePath = excelSaveAddress + fileName;
-            // 创建CSV写对象 例如:CsvWriter(文件路径，分隔符，编码格式);
-            CsvWriter csvWriter = new CsvWriter(csvFilePath, ',', Charset.forName("UTF-8"));
-            // 写表头
-            String[] csvHeaders = {"area_code","name_en","name_cn","country_id"};
-            csvWriter.writeRecord(csvHeaders);
-            // 写内容
-            for (String[] quanOrderArray : strArrays) {
-                csvWriter.writeRecord(quanOrderArray);
-            }
-            csvWriter.close();
-            File file = new File(excelSaveAddress + fileName);
-            String utf8NoBomFileName ="234.csv";
-            File utf8NoBomFile = new File(excelSaveAddress + utf8NoBomFileName);
-            CharacterCovertUtil.turnUTF8withoutBOM(file, utf8NoBomFile);
-            file.delete();
-        } catch (Exception e1) {
-            e1.printStackTrace();
-        }
+//        JsonBean jsonBean = JSON.parseObject(jsonTxt, JsonBean.class);
+//        List<JsonBean.ListBean> list = jsonBean.getList();
+//        list.stream().forEach(e -> System.out.println(e));
+//        try {
+//            Field[] declaredFields = JsonBean.ListBean.class.getDeclaredFields();
+//            ArrayList<String[]> strArrays = new ArrayList<>();
+//            list.stream().forEach(e -> {
+//                String[] strings = objectToStringArray(declaredFields, e);
+//                strArrays.add(strings);
+//            });
+//            String fileName = "123.csv";
+//            String csvFilePath = excelSaveAddress + fileName;
+//            // 创建CSV写对象 例如:CsvWriter(文件路径，分隔符，编码格式);
+//            CsvWriter csvWriter = new CsvWriter(csvFilePath, ',', Charset.forName("UTF-8"));
+//            // 写表头
+//            String[] csvHeaders = {"area_code","name_en","name_cn","country_id"};
+//            csvWriter.writeRecord(csvHeaders);
+//            // 写内容
+//            for (String[] quanOrderArray : strArrays) {
+//                csvWriter.writeRecord(quanOrderArray);
+//            }
+//            csvWriter.close();
+//            File file = new File(excelSaveAddress + fileName);
+//            String utf8NoBomFileName ="234.csv";
+//            File utf8NoBomFile = new File(excelSaveAddress + utf8NoBomFileName);
+//            CharacterCovertUtil.turnUTF8withoutBOM(file, utf8NoBomFile);
+//            file.delete();
+//        } catch (Exception e1) {
+//            e1.printStackTrace();
+//        }
     }
 
     private String[] objectToStringArray(Field[] declaredFields, Object obj) {
